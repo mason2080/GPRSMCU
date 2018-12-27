@@ -1,0 +1,93 @@
+[submodule "xgate"]
+	path = xgate
+	url = git@10.13.211.1:ev05/ev05_xgate.git
+[submodule "Drivers/pe/mcal"]
+	path = Drivers/pe/mcal
+	url = git@10.13.211.1:ev05/drivers/pe/s12x/xe384/bcu_d_mcal.git
+[submodule "Scheme"]
+	path = Scheme
+	url = git@10.13.211.1:ev05/sch.git
+[submodule "BasicSoftware"]
+	path = BasicSoftware
+	url = git@10.13.211.1:ev05/Bsw.git
+[submodule "DataLayer"]
+	path = DataLayer
+	url = git@10.13.211.1:ev05/DataLayer.git
+[submodule "Application/DataAnalysis"]
+	path = Application/DataAnalysis
+	url = git@10.13.211.1:ev05/app/DataAnalysis.git
+[submodule "Application/Protocols/IntCAN"]
+	path = Application/Protocols/IntCAN
+	url = git@10.13.211.1:ev05/app/IntCAN.git
+[submodule "Application/Actors"]
+	path = Application/Actors
+	url = git@10.13.211.1:ev05/app/Actors.git
+[submodule "Config/EcuConf"]
+	path = Config/EcuConf
+	url = git@10.13.211.1:ev05/config/EcuConf.git
+[submodule "Config/SysConf"]
+	path = Config/SysConf
+	url = git@10.13.211.1:ev05/config/SysConf.git
+[submodule "Application/Sof"]
+	path = Application/Sof
+	url = git@10.13.211.1:ev05/app/sof.git
+[submodule "Application/Protocols/CarCAN"]
+	path = Application/Protocols/CarCAN
+	url = git@10.13.211.1:ev05/app/CarCAN.git
+[submodule "Application/Protocols/ChgCAN"]
+	path = Application/Protocols/ChgCAN
+	url = git@10.13.211.1:ev05/app/ChgCAN.git
+[submodule "ComplexDeviceDrivers"]
+	path = ComplexDeviceDrivers
+	url = git@10.13.211.1:ev05/CDD.git
+[submodule "Application/Soc"]
+	path = Application/Soc
+	url = git@10.13.211.1:ev05/app/soc.git
+[submodule "Application/Soh"]
+	path = Application/Soh
+	url = git@10.13.211.1:ev05/app/soh.git
+[submodule "Application/IntRes"]
+	path = Application/IntRes
+	url = git@10.13.211.1:ev05/app/IntRes.git
+[submodule "Application/Manage/Thm"]
+	path = Application/Manage/Thm
+	url = git@10.13.211.1:ev05/app/thm.git
+[submodule "Application/Manage/Chgm"]
+	path = Application/Manage/Chgm
+	url = git@10.13.211.1:ev05/app/chgm.git
+[submodule "Application/Manage/Hvm"]
+	path = Application/Manage/Hvm
+	url = git@10.13.211.1:ev05/app/hvm.git
+[submodule "Application/Manage/Lvm"]
+	path = Application/Manage/Lvm
+	url = git@10.13.211.1:ev05/app/lvm.git
+[submodule "Config/Vesion"]
+	path = Config/Vesion
+	url = git@10.13.211.1:ev05/config/Version.git
+[submodule "Application/Sensors/SumvDet"]
+	path = Application/Sensors/SumvDet
+	url = git@10.13.211.1:ev05/app/sensors/SumvDet.git
+[submodule "Application/Sensors/CurrentDet"]
+	path = Application/Sensors/CurrentDet
+	url = git@10.13.211.1:ev05/app/sensors/CurrentDet.git
+[submodule "Application/Sensors/IsoDet"]
+	path = Application/Sensors/IsoDet
+	url = git@10.13.211.1:ev05/app/sensors/IsoDet.git
+[submodule "Application/Sensors/SupplyPowDet"]
+	path = Application/Sensors/SupplyPowDet
+	url = git@10.13.211.1:ev05/app/sensors/SupplyPowDet.git
+[submodule "Application/Sensors/DI"]
+	path = Application/Sensors/DI
+	url = git@10.13.211.1:ev05/app/sensors/DI.git
+[submodule "Application/Sensors/GBChgDet"]
+	path = Application/Sensors/GBChgDet
+	url = git@10.13.211.1:ev05/app/sensors/GBChgDet.git
+[submodule "Application/Manage/Balm"]
+	path = Application/Manage/Balm
+	url = git@10.13.211.1:ev05/app/balm.git
+[submodule "Application/Sensors/AI"]
+	path = Application/Sensors/AI
+	url = git@10.13.211.1:ev05/app/sensors/AI.git
+[submodule "Application/Manage/RunModem"]
+	path = Application/Manage/RunModem
+	url = git@10.13.211.1:ev05/app/RunModem.git

@@ -1,0 +1,12 @@
+# untracked file
+*.o
+*.tdt
+*.stg
+*~
+
+# exclude bin/ but *.sx and *.map
+bin/
+!bin/*.sx
+!bin/*.map
+
+

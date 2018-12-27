@@ -1,0 +1,11 @@
+Units and locations in library 'D:\work\src\ev05\src-in-server\ev05-bcu_d\lib\AI.lib'
+Unit name         size     from       to
+SensorAi.c.o      6567      113     6680
+
+EXPORTED OBJECTS
+AiIf_MeasureChannel            I   (SensorAi.c.o)
+SensorAi_GetVesionModuleVer    F   (SensorAi.c.o)
+SensorAi_VerDef                O   (SensorAi.c.o)
+Sensor_GetAiSt                 F   (SensorAi.c.o)
+_COPY                          I   (SensorAi.c.o)
+_LSHRU                         I   (SensorAi.c.o)

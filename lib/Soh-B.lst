@@ -1,0 +1,29 @@
+Units and locations in library 'D:\work\src\ev05\src-in-server\ev05-bcu_d\lib\Soh-B.lib'
+Unit name       size     from       to
+SOH-B.c.o      15109      116    15225
+
+EXPORTED OBJECTS
+Bat_GetActualCapacityCalc       I   (SOH-B.c.o)
+Bat_GetAvgIntRes                I   (SOH-B.c.o)
+Bat_GetRatedCapacityCalc        I   (SOH-B.c.o)
+Bat_GetSoh                      I   (SOH-B.c.o)
+Bat_GetTotalDchAh               I   (SOH-B.c.o)
+Bat_UpdateActualCapacityCalc    I   (SOH-B.c.o)
+Bat_UpdateSoh                   I   (SOH-B.c.o)
+Bat_UpdateTotalChgAh            I   (SOH-B.c.o)
+Bat_UpdateTotalDChAh            I   (SOH-B.c.o)
+EE_LoadVar                      I   (SOH-B.c.o)
+EE_SaveVar                      I   (SOH-B.c.o)
+SOH_B_GetVesionModuleVer        F   (SOH-B.c.o)
+SOH_CtrlPara                    O   (SOH-B.c.o)
+SOH_IntRes                      I   (SOH-B.c.o)
+SOH_Macro                       I   (SOH-B.c.o)
+SOH_ModuleCbk                   F   (SOH-B.c.o)
+SOH_ModuleCountCbk              F   (SOH-B.c.o)
+SOH_ModuleInit                  F   (SOH-B.c.o)
+SOH_TmCnt                       O   (SOH-B.c.o)
+SOH_TotalDchAh                  I   (SOH-B.c.o)
+Soh_VerDef                      O   (SOH-B.c.o)
+_COPY                           I   (SOH-B.c.o)
+_LDIVU                          I   (SOH-B.c.o)
+_LMULU16x32                     I   (SOH-B.c.o)

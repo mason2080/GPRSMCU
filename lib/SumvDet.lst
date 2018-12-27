@@ -1,0 +1,33 @@
+Units and locations in library 'D:\work\src\ev05\src-in-server\ev05-bcu_d\lib\SumvDet.lib'
+Unit name        size     from       to
+SumvDet.c.o     18129      118    18247
+
+EXPORTED OBJECTS
+Bat_UpdateSumV                 I   (SumvDet.c.o)
+EE_LoadVar                     I   (SumvDet.c.o)
+EE_SaveVarForCalib             I   (SumvDet.c.o)
+Err_GetHwErrDetail             I   (SumvDet.c.o)
+Err_UpdateHwErrDetail          I   (SumvDet.c.o)
+Err_UpdateHwErrLevel           I   (SumvDet.c.o)
+SumvDet_Config                 O   (SumvDet.c.o)
+SumvDet_GetSumvAd              F   (SumvDet.c.o)
+SumvDet_GetVesionModuleVer     F   (SumvDet.c.o)
+SumvDet_Init                   F   (SumvDet.c.o)
+SumvDet_MainCbk                F   (SumvDet.c.o)
+SumvDet_MainCountCbk           F   (SumvDet.c.o)
+SumvDet_TmCnt                  O   (SumvDet.c.o)
+SumvDet_UpdateGainAndOffset    F   (SumvDet.c.o)
+SumvDet_VerDef                 O   (SumvDet.c.o)
+SumvIf_Init                    I   (SumvDet.c.o)
+SumvIf_RdAd                    I   (SumvDet.c.o)
+SumvIf_StartConvert            I   (SumvDet.c.o)
+SysConf_InitParaTable          I   (SumvDet.c.o)
+_COPY                          I   (SumvDet.c.o)
+_LADD                          I   (SumvDet.c.o)
+_LDIVU                         I   (SumvDet.c.o)
+gby_SumvDetStep                O   (SumvDet.c.o)
+gby_SumvResetFlg               O   (SumvDet.c.o)
+gwd_SumvAdValUnCngCnt          O   (SumvDet.c.o)
+gwd_SumvAdValue                O   (SumvDet.c.o)
+gwd_SumvAdValueBak             O   (SumvDet.c.o)
+gwd_SumvConf                   O   (SumvDet.c.o)

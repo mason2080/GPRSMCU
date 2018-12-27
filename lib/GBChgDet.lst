@@ -1,0 +1,18 @@
+Units and locations in library 'D:\work\src\ev05\src-in-server\ev05-bcu_d\lib\GBChgDet.lib'
+Unit name            size     from       to
+GbChg_IfDet.c.o      9693      119     9812
+
+EXPORTED OBJECTS
+AiIf_MeasureChannel            I   (GbChg_IfDet.c.o)
+Chg_UpdateCpPeriod             I   (GbChg_IfDet.c.o)
+GbChgDet_Ai                    F   (GbChg_IfDet.c.o)
+GbChgDet_Cp                    O   (GbChg_IfDet.c.o)
+GbChgDet_DutyCalc              F   (GbChg_IfDet.c.o)
+GbChgDet_GetVesionModuleVer    F   (GbChg_IfDet.c.o)
+GbChgDet_VerDef                O   (GbChg_IfDet.c.o)
+Gb_ADConver                    F   (GbChg_IfDet.c.o)
+Xgate_CpuGetAcCp               I   (GbChg_IfDet.c.o)
+_COPY                          I   (GbChg_IfDet.c.o)
+_LDIVU                         I   (GbChg_IfDet.c.o)
+_LMULU16x32                    I   (GbChg_IfDet.c.o)
+_LSHRU                         I   (GbChg_IfDet.c.o)

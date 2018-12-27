@@ -1,0 +1,306 @@
+
+#include "PE_Types.h"
+#include "PE_Error.h"
+#include "PE_Const.h"
+#include "IO_Map.h"
+#include "Cpu.h"
+#include "Ecu.h"
+#include "Xgate_ExtFlashSrv.h"
+#include "GeneralTypeDef.h"
+#include "Xgate_ExtFlash.h" 
+
+#ifdef XGATE_ENABLE_EXTFLASH
+
+#pragma DATA_SEG XGATE_DATA
+#pragma CODE_SEG XGATE_CODE
+#pragma CONST_SEG XGATE_CONST
+
+typedef struct
+{
+    uByte Data[264];
+    uWord Page;
+    uWord Dlen;
+    uByte ChkOrWr;
+}sXgate_ExtFlashType;
+sXgate_ExtFlashType Xgate_ExtFlashInfo;
+
+void Xgate_Delay(uWord delay)
+{
+    uWord i;
+    for(i = delay; i > 0; i--)
+    {
+        asm NOP;
+        asm NOP;
+    }
+}
+
+void Xgate_ExternFlashIf_WriteByte(uByte data)
+{
+    uByte i;
+    uByte btmp;
+    for(i = 0; i < 8; i++)
+    {
+        btmp = data << i;
+
+        if((btmp & 0x80) == 0x80)
+        {
+            (void)setReg8Bits(PTH, 0x20U);      /* PTH5=0x01U */
+//            (Shadow_H |= 0x20U);
+        }
+        else
+        {
+            (void)clrReg8Bits(PTH, 0x20U);
+//            (Shadow_H &= 0xDFU);
+        }
+
+        (void)setReg8Bits(PTH, 0x40U);      /* PTH6=0x01U */
+//        (Shadow_H |= 0x40U);                /* Set appropriate bit in shadow variable */
+        Xgate_Delay(2);
+        (void)clrReg8Bits(PTH, 0x40U);      /* PTH6=0x00U */
+//        (Shadow_H &= 0xBFU) ;               /* Set appropriate bit in shadow variable */
+        Xgate_Delay(2);
+    }
+}
+
+uByte Xgate_ExternFlashIf_ReadByte(void)
+{
+    uByte i;
+    uByte btmp;
+
+    btmp = 0;
+
+    for(i = 8; i > 0; i--)
+    {
+        Xgate_Delay(2);
+        //(*ExternFlash_Operation.ExternFlash_Sck.SetVal)();
+        (void)setReg8Bits(PTH, 0x40U) ;     /* PTH6=0x01U */
+//        (Shadow_H |= 0x40U);
+        Xgate_Delay(2);
+        btmp <<= 1;
+        //if((*ExternFlash_Operation.ExternFlash_So.GetVal)())
+        if((bool)((getReg8(PTH) & 0x10U)))
+        {
+            btmp |= 0x01;
+        }
+
+        // (*ExternFlash_Operation.ExternFlash_Sck.ClrVal)();
+        (void)clrReg8Bits(PTH, 0x40U);      /* PTH6=0x00U */
+//        (Shadow_H &= 0xBFU);
+
+    }
+    return btmp;
+}
+
+uByte Xgate_ExternFlashIf_ReadStatusReg(void)
+{
+    uByte btmp;
+
+//    (*ExternFlash_Operation.ExternFlash_Cs.ClrVal)();
+    (void)clrReg8Bits(PTH, 0x80U);      /* PTH7=0x00U */
+//    (Shadow_H &= 0x7FU);                /* Set appropriate bit in shadow variable */
+    Xgate_Delay(2);
+    Xgate_ExternFlashIf_WriteByte(0x57);  // STREGRD = 0x57
+
+    //(*ExternFlash_Operation.ExternFlash_Sck.SetVal)();
+    (void)setReg8Bits(PTH, 0x40U) ;     /* PTH6=0x01U */
+//    (Shadow_H |= 0x40U);
+    Xgate_Delay(2);
+//    (*ExternFlash_Operation.ExternFlash_Sck.ClrVal)();
+    (void)clrReg8Bits(PTH, 0x40U);      /* PTH6=0x00U */
+//    (Shadow_H &= 0xBFU);
+
+    btmp = Xgate_ExternFlashIf_ReadByte();
+
+//    (*ExternFlash_Operation.ExternFlash_Cs.SetVal)();
+    (void)setReg8Bits(PTH, 0x80U);      /* PTH7=0x01U */
+//    (Shadow_H |= 0x80U);
+    Xgate_Delay(2);
+
+    return btmp;
+}
+
+void Xgate_ExternFlashIf_WriteCmdSmallCap(uByte cmd, uWord page, uWord baddr)
+{
+    uLWord lwtmp;
+    uByte btmp;
+
+    lwtmp = cmd;
+    lwtmp = lwtmp << 15;
+    lwtmp = lwtmp + page;
+    lwtmp = lwtmp << 9;
+    lwtmp = lwtmp + baddr;
+
+    btmp = (uByte)(lwtmp >> 24);
+    Xgate_ExternFlashIf_WriteByte(btmp);
+
+    btmp = (uByte)(lwtmp >> 16);
+    Xgate_ExternFlashIf_WriteByte(btmp);
+
+    btmp = (uByte)(lwtmp >> 8);
+    Xgate_ExternFlashIf_WriteByte(btmp);
+
+    btmp = (uByte)lwtmp;
+    Xgate_ExternFlashIf_WriteByte(btmp);
+}
+
+void Xgate_ExternFlashIf_WritePage(void)
+{
+    uWord i;
+    uByte buf_no;
+    uWord buf_addr;
+    uByte status;
+
+    buf_no = 1;
+    buf_addr = 0;
+
+
+    if(1 == buf_no)
+    {
+        /*
+
+        (*ExternFlash_Operation.ExternFlash_Cs.ClrVal)();
+
+        (*ExternFlashIf_WriteCmd)(MPTRB1, page, buf_addr);
+
+        for(i = 0; i < dlen; i++)
+        {
+
+            ExternFlashIf_WriteByte(*p_data++);
+
+        }
+        (*ExternFlash_Operation.ExternFlash_Cs.SetVal)();
+
+        */
+        for(i = 0; i < 5; i++)
+        {
+            status = Xgate_ExternFlashIf_ReadStatusReg();
+            if(0x80 == (status & 0x80))
+            {
+                break;
+            }
+        }
+        if(0x80 == (status & 0x80))
+        {
+            /* write page and start address */
+            (void)clrReg8Bits(PTH, 0x80U);      /* PTH7=0x00U */
+//            (Shadow_H &= 0x7FU);                /* Set appropriate bit in shadow variable */
+
+            Xgate_Delay(10);
+            //(*ExternFlashIf_WriteCmd)(MPTRB1, page, buf_addr);
+            Xgate_ExternFlashIf_WriteCmdSmallCap(0x82, Xgate_ExtFlashInfo.Page, buf_addr);
+            for(i = 0; i < Xgate_ExtFlashInfo.Dlen; i++)
+            {
+
+                Xgate_ExternFlashIf_WriteByte(Xgate_ExtFlashInfo.Data[i]);
+
+            }
+            (void)setReg8Bits(PTH, 0x80U);      /* PTH7=0x01U */
+ //           (Shadow_H |= 0x80U);                /* Set appropriate bit in shadow variable */
+        }
+    }
+
+
+}
+
+uWord Xgate_ExternFlashIf_CheckPage(void)
+{
+    uWord i;
+    uByte data;
+    uWord err_code = 0;
+
+//    err_code = (uWord)EXTERNFLASHIF_ERR_OK;
+
+//    (*ExternFlash_Operation.ExternFlash_Cs.ClrVal)();
+    (void)clrReg8Bits(PTH, 0x80U);      /* PTH7=0x00U */
+//    (Shadow_H &= 0x7FU);
+    Xgate_Delay(2);
+//    (*ExternFlashIf_WriteCmd)(MMPRD, page, 0);
+    Xgate_ExternFlashIf_WriteCmdSmallCap(0x52, Xgate_ExtFlashInfo.Page, 0);  // MMPRD = 0x52
+
+    //32 NC bit
+    Xgate_ExternFlashIf_WriteByte(0x00);   //DONTC = 0x00
+    Xgate_ExternFlashIf_WriteByte(0x00);
+    Xgate_ExternFlashIf_WriteByte(0x00);
+    Xgate_ExternFlashIf_WriteByte(0x00);
+
+//    (*ExternFlash_Operation.ExternFlash_Sck.SetVal)();
+    (void)setReg8Bits(PTH, 0x40U) ;     /* PTH6=0x01U */
+//    (Shadow_H |= 0x40U);
+    Xgate_Delay(2);
+
+//    (*ExternFlash_Operation.ExternFlash_Sck.ClrVal)();
+    (void)clrReg8Bits(PTH, 0x40U);      /* PTH6=0x00U */
+//    (Shadow_H &= 0xBFU);
+    Xgate_Delay(2);
+    for(i = 0; i < Xgate_ExtFlashInfo.Dlen; i++)
+    {
+
+        data = Xgate_ExternFlashIf_ReadByte();
+        if(data != Xgate_ExtFlashInfo.Data[i])
+        {
+            err_code = 1;//(uWord)EXTERNFLASHIF_ERR_CHECK_FAIL;
+//           break;
+        }
+
+    }
+
+//    (*ExternFlash_Operation.ExternFlash_Cs.SetVal)();
+    (void)setReg8Bits(PTH, 0x80U);      /* PTH7=0x01U */
+//    (Shadow_H |= 0x80U);
+
+    return err_code;
+}
+
+void Xgate_ExtFlashIf_CheckPage(void)
+{
+    uByte i;
+    uByte status,rslt = 0;
+//   for(i = 0; i < 5; i++)
+
+ 
+    for(i = 0; i < 5; i++)
+    {
+        status = Xgate_ExternFlashIf_ReadStatusReg();
+        if(0x80 == (status & 0x80))
+        {
+            break;
+        }
+    }
+   
+    // 45db is ready
+    if(0x80 == (status & 0x80))
+    {
+        if(0 == Xgate_ExternFlashIf_CheckPage())
+        {
+            rslt = 0;
+        }
+        else
+        {
+            Xgate_ExternFlashIf_WritePage();
+            rslt = 1;
+        }
+    }
+    XGATE_XGATESET_EXTFLASH(1,rslt);
+    
+
+}
+
+interrupt void Xgate_ExtFlashEnableEvent(void)
+{
+    uWord i;
+
+    XGATE_XGATEGET_EXTFLASH(i,Xgate_ExtFlashInfo.Data,Xgate_ExtFlashInfo.Dlen, Xgate_ExtFlashInfo.Page,Xgate_ExtFlashInfo.ChkOrWr);
+    
+    if(0 == Xgate_ExtFlashInfo.ChkOrWr)
+    {
+        //Xgate_ExternFlashIf_WritePage();   
+    }
+    else
+    {
+        //Xgate_ExtFlashIf_CheckPage();  
+    }
+    
+    XGSWT = 0x0400;  // close soffware tirgger2
+}
+
+#endif //#ifdef XGATE_ENABLE_EXTFLASH 

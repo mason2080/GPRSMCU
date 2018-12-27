@@ -1,0 +1,23 @@
+Units and locations in library 'D:\work\src\ev05\src-in-server\ev05-bcu_d\lib\IntRes-AB.lib'
+Unit name          size     from       to
+IntRes-AB.c.o     15997      120    16117
+
+EXPORTED OBJECTS
+Bat_GetAvgT                     I   (IntRes-AB.c.o)
+Bat_GetCellV                    I   (IntRes-AB.c.o)
+Bat_GetCurrent                  I   (IntRes-AB.c.o)
+Bat_GetPackSerialNum            I   (IntRes-AB.c.o)
+Bat_GetSOC                      I   (IntRes-AB.c.o)
+Bat_GetSumV                     I   (IntRes-AB.c.o)
+Bat_UpdateTotalIntRes           I   (IntRes-AB.c.o)
+IntRes_AB_GetVesionModuleVer    F   (IntRes-AB.c.o)
+IntRes_Calc                     O   (IntRes-AB.c.o)
+IntRes_Infor                    O   (IntRes-AB.c.o)
+IntRes_ModuleCbk                F   (IntRes-AB.c.o)
+IntRes_ModuleCountCbk           F   (IntRes-AB.c.o)
+IntRes_ModuleInit               F   (IntRes-AB.c.o)
+IntRes_TmCnt                    O   (IntRes-AB.c.o)
+IntRes_VerDef                   O   (IntRes-AB.c.o)
+SysConf_GetParaValueFromRam     I   (IntRes-AB.c.o)
+_COPY                           I   (IntRes-AB.c.o)
+_LDIVU                          I   (IntRes-AB.c.o)

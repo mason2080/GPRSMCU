@@ -1,0 +1,12 @@
+Units and locations in library 'D:\work\src\ev05\src-in-server\ev05-bcu_d\lib\DI.lib'
+Unit name         size     from       to
+SensorDi.c.o      6587      113     6700
+
+EXPORTED OBJECTS
+DiIf_GetValue                  I   (SensorDi.c.o)
+SensorDi_GetVesionModuleVer    F   (SensorDi.c.o)
+SensorDi_VerDef                O   (SensorDi.c.o)
+Sensor_GetDiSt                 F   (SensorDi.c.o)
+_CASE_CHECKED                  I   (SensorDi.c.o)
+_CASE_CHECKED_BYTE             I   (SensorDi.c.o)
+_COPY                          I   (SensorDi.c.o)

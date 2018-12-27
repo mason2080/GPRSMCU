@@ -1,0 +1,20 @@
+Units and locations in library 'D:\work\src\ev05\src-in-server\ev05-bcu_d\lib\Scheme.lib'
+Unit name          size     from       to
+SchIf.c.o          5769     5173    10942
+Sch_Main.c.o       4988    10942    15930
+Sch_Timer.c.o      5056      117     5173
+
+EXPORTED OBJECTS
+MainTaskStack             O   (Sch_Main.c.o)
+Main_Task                 F   (Sch_Main.c.o)
+Sch_CounterCallback       I   (Sch_Timer.c.o)
+Sch_GetVesionModuleVer    F   (SchIf.c.o)
+Sch_Init                  F   (SchIf.c.o)
+Sch_MainCallback          I   (Sch_Main.c.o)
+Sch_TimerCallback         I   (Sch_Timer.c.o)
+Sch_VerDef                O   (SchIf.c.o)
+TimerTaskStack            O   (Sch_Timer.c.o)
+Timer_Enable              I   (SchIf.c.o)
+Timer_EnableEvent         I   (SchIf.c.o)
+Timer_Task                F   (Sch_Timer.c.o)
+_COPY                     I   (SchIf.c.o)

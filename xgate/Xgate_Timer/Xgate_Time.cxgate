@@ -1,0 +1,23 @@
+// xgate_time.c
+#include "Xgate_Time.h"
+#include "Xgate_ExtFlashSrv.h"
+#include "Xgate_AcCpIocSrv.h"
+#include "Xgate_RealTimeSrv.h"
+
+#ifdef XGATE_ENABLE_TIME
+
+#pragma DATA_SEG XGATE_DATA
+#pragma CODE_SEG XGATE_CODE
+#pragma CONST_SEG XGATE_CONST
+
+uByte Xgate_PTI1_Test;
+interrupt void Xgate_PTI1_ISR(void)
+{
+    Xgate_PTI1_Test++;
+    Xgate_RdRealTimeSrv();
+    Xgate_AcCpCalVal();
+    
+    PITTF = 0x01U;          
+}
+
+#endif

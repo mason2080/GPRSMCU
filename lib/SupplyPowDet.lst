@@ -1,0 +1,23 @@
+Units and locations in library 'D:\work\src\ev05\src-in-server\ev05-bcu_d\lib\SupplyPowDet.lib'
+Unit name             size     from       to
+SupplyPowDet.c.o     13239      123    13362
+
+EXPORTED OBJECTS
+AiIf_MeasureChannel                I   (SupplyPowDet.c.o)
+BmsSys_UpdateAlarmVolt             I   (SupplyPowDet.c.o)
+BmsSys_UpdateCanInhVolt            I   (SupplyPowDet.c.o)
+BmsSys_UpdateK15Volt               I   (SupplyPowDet.c.o)
+BmsSys_UpdateK30Volt               I   (SupplyPowDet.c.o)
+BmsSys_UpdateOffBDChgVolt          I   (SupplyPowDet.c.o)
+BmsSys_UpdateOnBDChgVolt           I   (SupplyPowDet.c.o)
+SupplyPowDet_CountCbk              F   (SupplyPowDet.c.o)
+SupplyPowDet_GetVesionModuleVer    F   (SupplyPowDet.c.o)
+SupplyPowDet_Init                  F   (SupplyPowDet.c.o)
+SupplyPowDet_ProcMain              F   (SupplyPowDet.c.o)
+SupplyPowDet_TmCnt                 O   (SupplyPowDet.c.o)
+SupplyPowDet_VerDef                O   (SupplyPowDet.c.o)
+_COPY                              I   (SupplyPowDet.c.o)
+_LDIVU                             I   (SupplyPowDet.c.o)
+_LMULU16x32                        I   (SupplyPowDet.c.o)
+_LSHRU                             I   (SupplyPowDet.c.o)
+gby_DetStep                        O   (SupplyPowDet.c.o)

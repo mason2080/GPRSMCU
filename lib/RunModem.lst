@@ -1,0 +1,13 @@
+Units and locations in library 'D:\work\src\ev05\src-in-server\ev05-bcu_d\lib\RunModem.lib'
+Unit name         size     from       to
+RunModem.c.o      7795      119     7914
+
+EXPORTED OBJECTS
+BatSys_UpdateRunMode           I   (RunModem.c.o)
+RumMode_Init                   F   (RunModem.c.o)
+RumMode_LocalEcuMode           O   (RunModem.c.o)
+RumMode_MainProcess            F   (RunModem.c.o)
+RunModem_GetVesionModuleVer    F   (RunModem.c.o)
+RunModem_SwitchModeTo          F   (RunModem.c.o)
+RunModem_VerDef                O   (RunModem.c.o)
+_COPY                          I   (RunModem.c.o)

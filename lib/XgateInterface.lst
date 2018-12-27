@@ -1,0 +1,40 @@
+Units and locations in library 'D:\work\src\ev05\src-in-server\ev05-bcu_d\lib\XgateInterface.lib'
+Unit name               size     from       to
+Xgate_AcCpIoc.c.o       5155      125     5280
+Xgate_Config.c.o        5179    26748    31927
+Xgate_ExtFlash.c.o      7101     5280    12381
+Xgate_RealTime.c.o      6417    12381    18798
+Xgate_StartIf.c.o       7950    18798    26748
+
+EXPORTED OBJECTS
+Share_ExtFlashDataBuff       O   (Xgate_ExtFlash.c.o)
+Shared_ExtFlashData          O   (Xgate_ExtFlash.c.o)
+Shared_RealTime              O   (Xgate_RealTime.c.o)
+Timer_1ms_Enable             I   (Xgate_StartIf.c.o)
+XGATE_STACK_H                O   (Xgate_StartIf.c.o)
+XGATE_STACK_L                O   (Xgate_StartIf.c.o)
+XGATE_VectorTable            I   (Xgate_StartIf.c.o)
+Xgate_CpuGetAcCp             F   (Xgate_AcCpIoc.c.o)
+Xgate_CpuGetExtFlah          F   (Xgate_ExtFlash.c.o)
+Xgate_CpuGetRealTime         F   (Xgate_RealTime.c.o)
+Xgate_CpuSetExtFlash         F   (Xgate_ExtFlash.c.o)
+Xgate_CpuSetRealTimeRdEn     F   (Xgate_RealTime.c.o)
+Xgate_CpuSetStart            F   (Xgate_ExtFlash.c.o)
+Xgate_GetVesionModuleVer     F   (Xgate_Config.c.o)
+Xgate_SetupAndStart          F   (Xgate_StartIf.c.o)
+Xgate_VerDef                 O   (Xgate_Config.c.o)
+_COPY                        I   (Xgate_Config.c.o)
+_INT_CFADDR                  I   (Xgate_StartIf.c.o)
+_INT_CFDATA0                 I   (Xgate_StartIf.c.o)
+_INT_XGPRIO                  I   (Xgate_StartIf.c.o)
+_XGISP31                     I   (Xgate_StartIf.c.o)
+_XGISPSEL                    I   (Xgate_StartIf.c.o)
+_XGMCTL                      I   (Xgate_StartIf.c.o)
+_XGSEM                       I   (Xgate_AcCpIoc.c.o)
+_XGSEM                       I   (Xgate_ExtFlash.c.o)
+_XGSEM                       I   (Xgate_RealTime.c.o)
+_XGSWT                       I   (Xgate_ExtFlash.c.o)
+gby_Shard_AcCpDuty           O   (Xgate_AcCpIoc.c.o)
+gby_Shared_RealTimeRdEn      O   (Xgate_RealTime.c.o)
+gwd_Shard_AcCpPeriod         O   (Xgate_AcCpIoc.c.o)
+gwd_Shared_RealTimeRdRslt    O   (Xgate_RealTime.c.o)
